@@ -57,6 +57,32 @@ namespace gui2 {
 	private: System::Windows::Forms::Label^ label6;
 	private: System::Windows::Forms::Label^ label7;
 	private: System::Windows::Forms::Label^ label8;
+	private: System::Windows::Forms::DataGridView^ dataGridView1;
+	private: System::Windows::Forms::DataGridViewTextBoxColumn^ Column1;
+	private: System::Windows::Forms::DataGridViewTextBoxColumn^ Column2;
+	private: System::Windows::Forms::DataGridViewTextBoxColumn^ Column3;
+	private: System::Windows::Forms::DataGridViewTextBoxColumn^ Column4;
+	private: System::Windows::Forms::DataGridViewTextBoxColumn^ Column5;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -90,6 +116,13 @@ namespace gui2 {
 			this->label6 = (gcnew System::Windows::Forms::Label());
 			this->label7 = (gcnew System::Windows::Forms::Label());
 			this->label8 = (gcnew System::Windows::Forms::Label());
+			this->dataGridView1 = (gcnew System::Windows::Forms::DataGridView());
+			this->Column1 = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
+			this->Column2 = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
+			this->Column3 = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
+			this->Column4 = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
+			this->Column5 = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->dataGridView1))->BeginInit();
 			this->SuspendLayout();
 			// 
 			// button1
@@ -111,7 +144,7 @@ namespace gui2 {
 			this->label1->BackColor = System::Drawing::SystemColors::ButtonFace;
 			this->label1->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 12, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(238)));
-			this->label1->Location = System::Drawing::Point(423, 28);
+			this->label1->Location = System::Drawing::Point(373, 31);
 			this->label1->Name = L"label1";
 			this->label1->Size = System::Drawing::Size(402, 127);
 			this->label1->TabIndex = 3;
@@ -119,7 +152,7 @@ namespace gui2 {
 			// 
 			// button2
 			// 
-			this->button2->Location = System::Drawing::Point(689, 481);
+			this->button2->Location = System::Drawing::Point(450, 486);
 			this->button2->Name = L"button2";
 			this->button2->Size = System::Drawing::Size(110, 35);
 			this->button2->TabIndex = 4;
@@ -141,7 +174,7 @@ namespace gui2 {
 			// 
 			// textBox1
 			// 
-			this->textBox1->Location = System::Drawing::Point(423, 256);
+			this->textBox1->Location = System::Drawing::Point(373, 259);
 			this->textBox1->Name = L"textBox1";
 			this->textBox1->Size = System::Drawing::Size(174, 22);
 			this->textBox1->TabIndex = 6;
@@ -152,7 +185,7 @@ namespace gui2 {
 			this->label2->AutoSize = true;
 			this->label2->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 10, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(238)));
-			this->label2->Location = System::Drawing::Point(340, 258);
+			this->label2->Location = System::Drawing::Point(290, 261);
 			this->label2->Name = L"label2";
 			this->label2->Size = System::Drawing::Size(55, 20);
 			this->label2->TabIndex = 7;
@@ -163,7 +196,7 @@ namespace gui2 {
 			this->label3->AutoSize = true;
 			this->label3->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 10, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(238)));
-			this->label3->Location = System::Drawing::Point(340, 301);
+			this->label3->Location = System::Drawing::Point(290, 304);
 			this->label3->Name = L"label3";
 			this->label3->Size = System::Drawing::Size(67, 20);
 			this->label3->TabIndex = 8;
@@ -177,7 +210,7 @@ namespace gui2 {
 			this->checkedListBox1->ForeColor = System::Drawing::Color::LightYellow;
 			this->checkedListBox1->FormattingEnabled = true;
 			this->checkedListBox1->Items->AddRange(gcnew cli::array< System::Object^  >(5) { L"🟌", L"🟌🟌", L"🟌🟌🟌", L"🟌🟌🟌🟌", L"🟌🟌🟌🟌🟌" });
-			this->checkedListBox1->Location = System::Drawing::Point(423, 301);
+			this->checkedListBox1->Location = System::Drawing::Point(373, 304);
 			this->checkedListBox1->Name = L"checkedListBox1";
 			this->checkedListBox1->Size = System::Drawing::Size(187, 136);
 			this->checkedListBox1->TabIndex = 9;
@@ -188,7 +221,7 @@ namespace gui2 {
 			this->label4->AutoSize = true;
 			this->label4->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 10, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(238)));
-			this->label4->Location = System::Drawing::Point(340, 457);
+			this->label4->Location = System::Drawing::Point(290, 460);
 			this->label4->Name = L"label4";
 			this->label4->Size = System::Drawing::Size(36, 100);
 			this->label4->TabIndex = 10;
@@ -199,7 +232,7 @@ namespace gui2 {
 			this->label5->AutoSize = true;
 			this->label5->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 10, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(238)));
-			this->label5->Location = System::Drawing::Point(419, 457);
+			this->label5->Location = System::Drawing::Point(369, 460);
 			this->label5->Name = L"label5";
 			this->label5->Size = System::Drawing::Size(18, 20);
 			this->label5->TabIndex = 11;
@@ -210,7 +243,7 @@ namespace gui2 {
 			this->label6->AutoSize = true;
 			this->label6->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 10, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(238)));
-			this->label6->Location = System::Drawing::Point(330, 32);
+			this->label6->Location = System::Drawing::Point(280, 35);
 			this->label6->Name = L"label6";
 			this->label6->Size = System::Drawing::Size(77, 20);
 			this->label6->TabIndex = 12;
@@ -221,7 +254,7 @@ namespace gui2 {
 			this->label7->AutoSize = true;
 			this->label7->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 10, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(238)));
-			this->label7->Location = System::Drawing::Point(377, 353);
+			this->label7->Location = System::Drawing::Point(327, 356);
 			this->label7->Name = L"label7";
 			this->label7->Size = System::Drawing::Size(18, 20);
 			this->label7->TabIndex = 13;
@@ -238,11 +271,65 @@ namespace gui2 {
 			this->label8->Text = L"label8";
 			this->label8->Click += gcnew System::EventHandler(this, &MyForm::label8_Click);
 			// 
+			// dataGridView1
+			// 
+			this->dataGridView1->ColumnHeadersHeightSizeMode = System::Windows::Forms::DataGridViewColumnHeadersHeightSizeMode::AutoSize;
+			this->dataGridView1->Columns->AddRange(gcnew cli::array< System::Windows::Forms::DataGridViewColumn^  >(5) {
+				this->Column1,
+					this->Column2, this->Column3, this->Column4, this->Column5
+			});
+			this->dataGridView1->Location = System::Drawing::Point(622, 183);
+			this->dataGridView1->Name = L"dataGridView1";
+			this->dataGridView1->RowHeadersWidth = 51;
+			this->dataGridView1->RowTemplate->Height = 24;
+			this->dataGridView1->Size = System::Drawing::Size(710, 338);
+			this->dataGridView1->TabIndex = 15;
+			this->dataGridView1->CellContentClick += gcnew System::Windows::Forms::DataGridViewCellEventHandler(this, &MyForm::dataGridView1_CellContentClick);
+			// 
+			// Column1
+			// 
+			this->Column1->DataPropertyName = L"int";
+			this->Column1->Frozen = true;
+			this->Column1->HeaderText = L"ID";
+			this->Column1->MinimumWidth = 6;
+			this->Column1->Name = L"Column1";
+			this->Column1->Width = 35;
+			// 
+			// Column2
+			// 
+			this->Column2->Frozen = true;
+			this->Column2->HeaderText = L"Content";
+			this->Column2->MinimumWidth = 6;
+			this->Column2->Name = L"Column2";
+			this->Column2->Width = 400;
+			// 
+			// Column3
+			// 
+			this->Column3->HeaderText = L"Type";
+			this->Column3->MinimumWidth = 6;
+			this->Column3->Name = L"Column3";
+			this->Column3->Width = 50;
+			// 
+			// Column4
+			// 
+			this->Column4->HeaderText = L"Rating";
+			this->Column4->MinimumWidth = 6;
+			this->Column4->Name = L"Column4";
+			this->Column4->Width = 50;
+			// 
+			// Column5
+			// 
+			this->Column5->HeaderText = L"Date";
+			this->Column5->MinimumWidth = 6;
+			this->Column5->Name = L"Column5";
+			this->Column5->Width = 125;
+			// 
 			// MyForm
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(8, 16);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
-			this->ClientSize = System::Drawing::Size(840, 547);
+			this->ClientSize = System::Drawing::Size(1398, 547);
+			this->Controls->Add(this->dataGridView1);
 			this->Controls->Add(this->label8);
 			this->Controls->Add(this->label7);
 			this->Controls->Add(this->label6);
@@ -259,6 +346,7 @@ namespace gui2 {
 			this->Name = L"MyForm";
 			this->Text = L"MyForm";
 			this->Load += gcnew System::EventHandler(this, &MyForm::MyForm_Load);
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->dataGridView1))->EndInit();
 			this->ResumeLayout(false);
 			this->PerformLayout();
 
@@ -310,7 +398,18 @@ namespace gui2 {
 		private: System::Void MyForm_Load(System::Object^ sender, System::EventArgs^ e) {
 		}
 
+	    bool ifExist(int id) {
+			bool idExist = true;
+			for (int i = 0; i < dataGridView1->Rows->Count; i++)
+				{
+					int id1 = System::Convert::ToInt32(dataGridView1->Rows[i]->Cells["Column1"]->Value);
+					if (id1 == id) {
+						return false;
+						break;
+					}
 
+				}
+		}
 					  //dodaj joke
 		private: System::Void button3_Click(System::Object^ sender, System::EventArgs^ e) {
 	
@@ -327,9 +426,19 @@ namespace gui2 {
 				//label8->Text = joke.getID().ToString();
 				std::string dupa = joke.getData();
 				label8->Text = gcnew System::String(dupa.c_str());
+				if (ifExist(System::Convert::ToInt32(label5->Text))) {
+					JokeManager jokemanager;
+					jokemanager.addJoke(joke);
+					int newRowIndex = dataGridView1->Rows->Add();
 
-				JokeManager jokemanager;
-				jokemanager.addJoke(joke);
+					dataGridView1->Rows[newRowIndex]->Cells["Column1"]->Value = ID; // Ustaw wartość komórki w nowym wierszu
+					dataGridView1->Rows[newRowIndex]->Cells["Column2"]->Value = (label1->Text);
+					dataGridView1->Rows[newRowIndex]->Cells["Column3"]->Value = (textBox1->Text);
+					dataGridView1->Rows[newRowIndex]->Cells["Column4"]->Value = rating;
+					dataGridView1->Rows[newRowIndex]->Cells["Column5"]->Value = (label8->Text);
+				}
+
+				
 				label1->Text = "";
 				textBox1->Text = "";
 				label7->Text = "";
@@ -337,6 +446,7 @@ namespace gui2 {
 				label8->Text = "";
 
 		}
+
 			   //wypisz joke caly
 	   private: System::Void label8_Click(System::Object^ sender, System::EventArgs^ e) {
 		   
@@ -372,5 +482,7 @@ private: System::Void textBox1_TextChanged_1(System::Object^ sender, System::Eve
 
 }
 
+private: System::Void dataGridView1_CellContentClick(System::Object^ sender, System::Windows::Forms::DataGridViewCellEventArgs^ e) {
+}
 };
 }
