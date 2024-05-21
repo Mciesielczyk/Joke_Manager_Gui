@@ -3,7 +3,7 @@
 #include <string>
 #include <msclr/marshal_cppstd.h>
 #include "JokeManager.h"
-
+#pragma warning(disable : 4996)
 namespace gui2 {
 	//ref class Start;
 	using namespace System;
@@ -20,15 +20,20 @@ namespace gui2 {
 	{
 	private:
 		Form^ mainForm;  // Reference to the main form
-
+		
 	
 	public:
+		/*MyForm(JokeManager* manager) {
+			InitializeComponent();
+			jokeManager = manager;
+		}*/
 		MyForm(Form^ mainForm)  // Modified constructor to accept main form reference
 		{
 			InitializeComponent();
 			this->mainForm = mainForm;
 
 		}
+		//JokeManager* jokeManager;
 
 	protected:
 		/// <summary>
@@ -56,34 +61,15 @@ namespace gui2 {
 	private: System::Windows::Forms::Label^ label5;
 	private: System::Windows::Forms::Label^ label6;
 	private: System::Windows::Forms::Label^ label7;
-	private: System::Windows::Forms::Label^ label8;
+
 	private: System::Windows::Forms::DataGridView^ dataGridView1;
 	private: System::Windows::Forms::DataGridViewTextBoxColumn^ Column1;
 	private: System::Windows::Forms::DataGridViewTextBoxColumn^ Column2;
 	private: System::Windows::Forms::DataGridViewTextBoxColumn^ Column3;
 	private: System::Windows::Forms::DataGridViewTextBoxColumn^ Column4;
 	private: System::Windows::Forms::DataGridViewTextBoxColumn^ Column5;
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+	private: System::Windows::Forms::Label^ label8;
+	private: System::Windows::Forms::Button^ button4;
 
 
 
@@ -115,13 +101,14 @@ namespace gui2 {
 			this->label5 = (gcnew System::Windows::Forms::Label());
 			this->label6 = (gcnew System::Windows::Forms::Label());
 			this->label7 = (gcnew System::Windows::Forms::Label());
-			this->label8 = (gcnew System::Windows::Forms::Label());
 			this->dataGridView1 = (gcnew System::Windows::Forms::DataGridView());
 			this->Column1 = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
 			this->Column2 = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
 			this->Column3 = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
 			this->Column4 = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
 			this->Column5 = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
+			this->label8 = (gcnew System::Windows::Forms::Label());
+			this->button4 = (gcnew System::Windows::Forms::Button());
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->dataGridView1))->BeginInit();
 			this->SuspendLayout();
 			// 
@@ -129,8 +116,8 @@ namespace gui2 {
 			// 
 			this->button1->AutoSizeMode = System::Windows::Forms::AutoSizeMode::GrowAndShrink;
 			this->button1->BackColor = System::Drawing::Color::Tomato;
-			this->button1->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 14, System::Drawing::FontStyle::Italic, System::Drawing::GraphicsUnit::Point,
-				static_cast<System::Byte>(238)));
+			this->button1->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 14, static_cast<System::Drawing::FontStyle>((System::Drawing::FontStyle::Bold | System::Drawing::FontStyle::Italic)),
+				System::Drawing::GraphicsUnit::Point, static_cast<System::Byte>(238)));
 			this->button1->Location = System::Drawing::Point(31, 28);
 			this->button1->Name = L"button1";
 			this->button1->Size = System::Drawing::Size(228, 80);
@@ -162,11 +149,11 @@ namespace gui2 {
 			// 
 			// button3
 			// 
-			this->button3->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 10, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+			this->button3->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 14, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(238)));
-			this->button3->Location = System::Drawing::Point(78, 164);
+			this->button3->Location = System::Drawing::Point(31, 133);
 			this->button3->Name = L"button3";
-			this->button3->Size = System::Drawing::Size(119, 60);
+			this->button3->Size = System::Drawing::Size(228, 79);
 			this->button3->TabIndex = 5;
 			this->button3->Text = L"Add joke";
 			this->button3->UseVisualStyleBackColor = true;
@@ -261,16 +248,6 @@ namespace gui2 {
 			this->label7->Text = L"0";
 			this->label7->Click += gcnew System::EventHandler(this, &MyForm::label7_Click);
 			// 
-			// label8
-			// 
-			this->label8->AutoSize = true;
-			this->label8->Location = System::Drawing::Point(57, 304);
-			this->label8->Name = L"label8";
-			this->label8->Size = System::Drawing::Size(44, 16);
-			this->label8->TabIndex = 14;
-			this->label8->Text = L"label8";
-			this->label8->Click += gcnew System::EventHandler(this, &MyForm::label8_Click);
-			// 
 			// dataGridView1
 			// 
 			this->dataGridView1->ColumnHeadersHeightSizeMode = System::Windows::Forms::DataGridViewColumnHeadersHeightSizeMode::AutoSize;
@@ -278,36 +255,39 @@ namespace gui2 {
 				this->Column1,
 					this->Column2, this->Column3, this->Column4, this->Column5
 			});
-			this->dataGridView1->Location = System::Drawing::Point(622, 183);
+			this->dataGridView1->Location = System::Drawing::Point(629, 112);
 			this->dataGridView1->Name = L"dataGridView1";
 			this->dataGridView1->RowHeadersWidth = 51;
 			this->dataGridView1->RowTemplate->Height = 24;
-			this->dataGridView1->Size = System::Drawing::Size(710, 338);
+			this->dataGridView1->Size = System::Drawing::Size(614, 317);
 			this->dataGridView1->TabIndex = 15;
 			this->dataGridView1->CellContentClick += gcnew System::Windows::Forms::DataGridViewCellEventHandler(this, &MyForm::dataGridView1_CellContentClick);
 			// 
 			// Column1
 			// 
 			this->Column1->DataPropertyName = L"int";
-			this->Column1->Frozen = true;
 			this->Column1->HeaderText = L"ID";
 			this->Column1->MinimumWidth = 6;
 			this->Column1->Name = L"Column1";
+			this->Column1->ReadOnly = true;
 			this->Column1->Width = 35;
 			// 
 			// Column2
 			// 
-			this->Column2->Frozen = true;
 			this->Column2->HeaderText = L"Content";
 			this->Column2->MinimumWidth = 6;
 			this->Column2->Name = L"Column2";
-			this->Column2->Width = 400;
+			this->Column2->ReadOnly = true;
+			this->Column2->Resizable = System::Windows::Forms::DataGridViewTriState::True;
+			this->Column2->Width = 300;
 			// 
 			// Column3
 			// 
 			this->Column3->HeaderText = L"Type";
 			this->Column3->MinimumWidth = 6;
 			this->Column3->Name = L"Column3";
+			this->Column3->ReadOnly = true;
+			this->Column3->Resizable = System::Windows::Forms::DataGridViewTriState::True;
 			this->Column3->Width = 50;
 			// 
 			// Column4
@@ -315,6 +295,7 @@ namespace gui2 {
 			this->Column4->HeaderText = L"Rating";
 			this->Column4->MinimumWidth = 6;
 			this->Column4->Name = L"Column4";
+			this->Column4->ReadOnly = true;
 			this->Column4->Width = 50;
 			// 
 			// Column5
@@ -322,15 +303,39 @@ namespace gui2 {
 			this->Column5->HeaderText = L"Date";
 			this->Column5->MinimumWidth = 6;
 			this->Column5->Name = L"Column5";
+			this->Column5->ReadOnly = true;
 			this->Column5->Width = 125;
+			// 
+			// label8
+			// 
+			this->label8->AutoSize = true;
+			this->label8->Location = System::Drawing::Point(75, 464);
+			this->label8->Name = L"label8";
+			this->label8->Size = System::Drawing::Size(10, 16);
+			this->label8->TabIndex = 16;
+			this->label8->Text = L".";
+			this->label8->Click += gcnew System::EventHandler(this, &MyForm::label8_Click_1);
+			// 
+			// button4
+			// 
+			this->button4->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 14, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(238)));
+			this->button4->Location = System::Drawing::Point(31, 249);
+			this->button4->Name = L"button4";
+			this->button4->Size = System::Drawing::Size(228, 75);
+			this->button4->TabIndex = 17;
+			this->button4->Text = L"Save to file\r\n";
+			this->button4->UseVisualStyleBackColor = true;
+			this->button4->Click += gcnew System::EventHandler(this, &MyForm::button4_Click);
 			// 
 			// MyForm
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(8, 16);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
-			this->ClientSize = System::Drawing::Size(1398, 547);
-			this->Controls->Add(this->dataGridView1);
+			this->ClientSize = System::Drawing::Size(1314, 566);
+			this->Controls->Add(this->button4);
 			this->Controls->Add(this->label8);
+			this->Controls->Add(this->dataGridView1);
 			this->Controls->Add(this->label7);
 			this->Controls->Add(this->label6);
 			this->Controls->Add(this->label5);
@@ -409,6 +414,7 @@ namespace gui2 {
 					}
 
 				}
+			return true;
 		}
 					  //dodaj joke
 		private: System::Void button3_Click(System::Object^ sender, System::EventArgs^ e) {
@@ -421,14 +427,26 @@ namespace gui2 {
 				std::string dateAdded = ctime(&now);
 				int rating = System::Convert::ToInt32(label7->Text);
 				int ID = System::Convert::ToInt32(label5->Text);
-	
-				Jokes joke(content, type, dateAdded, rating, ID);
+				label8->Text = gcnew String(dateAdded.c_str());
+
+				Jokes joke("sfderf", "sdf", "sdfg", 2, 2);
 				//label8->Text = joke.getID().ToString();
-				std::string dupa = joke.getData();
-				label8->Text = gcnew System::String(dupa.c_str());
+				
 				if (ifExist(System::Convert::ToInt32(label5->Text))) {
-					JokeManager jokemanager;
-					jokemanager.addJoke(joke);
+					JokeManager jokeManager;
+		
+					jokeManager.addJoke(joke);
+					//if (jokeManager != nullptr) {
+					//	// Dodanie dowcipu do jokeManager
+					//	jokeManager->addJoke(joke);
+
+					//	// Zamknięcie formularza
+					//	this->Close();
+					//}
+					//else {
+					//	// Obsługa błędu, jeśli jokeManager nie jest zainicjalizowany
+					//	MessageBox::Show("Błąd: JokeManager nie został zainicjalizowany!");
+					//}
 					int newRowIndex = dataGridView1->Rows->Add();
 
 					dataGridView1->Rows[newRowIndex]->Cells["Column1"]->Value = ID; // Ustaw wartość komórki w nowym wierszu
@@ -483,6 +501,11 @@ private: System::Void textBox1_TextChanged_1(System::Object^ sender, System::Eve
 }
 
 private: System::Void dataGridView1_CellContentClick(System::Object^ sender, System::Windows::Forms::DataGridViewCellEventArgs^ e) {
+}
+private: System::Void label8_Click_1(System::Object^ sender, System::EventArgs^ e) {
+}
+private: System::Void button4_Click(System::Object^ sender, System::EventArgs^ e) {
+	savetofile(dataGridView1, "JokeFile");
 }
 };
 }

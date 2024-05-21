@@ -6,8 +6,9 @@ using namespace System::Windows::Forms;
 
 
 
-void main(array<String^>^ args)
+int main(array<String^>^ args)
 {
+
 
 
     try

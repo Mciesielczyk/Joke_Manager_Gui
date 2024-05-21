@@ -7,6 +7,91 @@
 #include <sstream>
 #include <vector>
 
+
+using namespace System::Windows::Forms;
+using namespace msclr::interop;
+
+void savetofile(DataGridView^ dataGridView, System::String^ filePath)
+{
+    std::string filePathStr = marshal_as<std::string>(filePath);
+    std::ofstream file(filePathStr);
+
+    if (!file.is_open())
+    {
+        MessageBox::Show("Nie mo¿na otworzyæ pliku do zapisu.", "B³¹d", MessageBoxButtons::OK, MessageBoxIcon::Error);
+        return;
+    }
+
+    // Zapisz dane wierszy
+    for (int i = 0; i < dataGridView->RowCount; ++i)
+    {
+        for (int j = 0; j < dataGridView->ColumnCount; ++j)
+        {
+            file << marshal_as<std::string>(dataGridView->Rows[i]->Cells[j]->Value == nullptr ? "" : dataGridView->Rows[i]->Cells[j]->Value->ToString());
+            if (j < dataGridView->ColumnCount - 1)
+            {
+                file << ",";
+            }
+        }
+        
+    }
+
+    file.close();
+    MessageBox::Show("Dane zosta³y pomyœlnie zapisane do pliku.", "Sukces", MessageBoxButtons::OK, MessageBoxIcon::Information);
+}
+
+void loadfile(System::Windows::Forms::DataGridView^ dataGridView, System::String^ filePath) {
+    std::string filePathstr = msclr::interop::marshal_as<std::string>(filePath);
+    std::ifstream file(filePathstr);
+
+    if (!file.is_open()) {
+        MessageBox::Show("Nie mo¿na otworzyæ pliku.", "B³¹d", MessageBoxButtons::OK, MessageBoxIcon::Error);
+        return;
+    }
+    // Wczytaj dane z pliku CSV i wpisz do DataGridView
+    std::vector<std::vector<std::string>> data; // Tablica dwuwymiarowa do przechowywania danych
+
+    std::string line;
+    while (std::getline(file, line))
+    {
+        std::vector<std::string> row;
+        std::stringstream ss(line);
+        std::string cell;
+
+        while (std::getline(ss, cell, ','))
+        {
+            row.push_back(cell);
+        }
+
+        data.push_back(row);
+    }
+
+    file.close();
+    data.pop_back();
+    // Wpisz wczytane dane do DataGridView
+    dataGridView->Rows->Clear(); // Wyczyœæ istniej¹ce dane w DataGridView
+    
+    for (const auto& row : data)
+    {
+        int rowIndex = dataGridView->Rows->Add(); // Dodaj nowy wiersz
+
+        for (int i = 0; i < row.size(); ++i)
+        {
+            dataGridView->Rows[rowIndex]->Cells[i]->Value = gcnew System::String(row[i].c_str()); // Wpisz wartoœæ komórki
+        }
+    }
+
+
+    MessageBox::Show("Dane zosta³y wczytane z pliku.", "Sukces", MessageBoxButtons::OK, MessageBoxIcon::Information);
+}
+
+
+
+
+
+
+
+
 // Funkcja callback do zapisywania danych odpowiedzi
 size_t write_callback(void* ptr, size_t size, size_t nmemb, std::string* data) {
     // Pobierz wskaŸnik do bufora z danymi

@@ -73,14 +73,18 @@
     <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
-  <PropertyGroup />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <IncludePath>"C:\Users\micha\Desktop\projekt\include";$(IncludePath)</IncludePath>
+    <LibraryPath>"C:\Users\micha\Desktop\projekt\lib";$(LibraryPath)</LibraryPath>
+  </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <ClCompile>
       <WarningLevel>Level3</WarningLevel>
       <PreprocessorDefinitions>_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>"C:\Users\micha\Desktop\projekt\include";%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
-      <AdditionalDependencies />
+      <AdditionalDependencies>DLL.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <SubSystem>Windows</SubSystem>
       <EntryPointSymbol>main</EntryPointSymbol>
     </Link>
@@ -121,15 +125,20 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="get_access_URL.cpp" />
+    <ClCompile Include="Global.cpp" />
     <ClCompile Include="JokeManager.cpp" />
     <ClCompile Include="Jokes.cpp" />
+    <ClCompile Include="Meniu.cpp" />
     <ClCompile Include="MyForm.cpp" />
     <ClCompile Include="Start.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="get_access_URL.h" />
+    <ClInclude Include="Global.h" />
     <ClInclude Include="JokeManager.h" />
     <ClInclude Include="Jokes.h" />
+    <ClInclude Include="Meniu.h">
+      <FileType>CppForm</FileType>
+    </ClInclude>
     <ClInclude Include="MyForm.h">
       <FileType>CppForm</FileType>
     </ClInclude>
@@ -138,6 +147,9 @@
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="Meniu.resx">
+      <DependentUpon>Meniu.h</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="MyForm.resx">
       <DependentUpon>MyForm.h</DependentUpon>
     </EmbeddedResource>

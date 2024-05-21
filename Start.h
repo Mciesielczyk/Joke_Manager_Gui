@@ -1,6 +1,7 @@
 #pragma once
 #include "MyForm.h"
-
+#include "Meniu.h"
+#include "JokeManager.h"
 namespace gui2 {
 
 	using namespace System;
@@ -19,6 +20,8 @@ namespace gui2 {
 		Start(void)
 		{
 			InitializeComponent();
+			//jokeManager = new JokeManager();
+
 			//
 			//TODO: W tym miejscu dodaj kod konstruktora
 			//
@@ -34,9 +37,11 @@ namespace gui2 {
 			{
 				delete components;
 			}
+			
 		}
 	private: System::Windows::Forms::Button^ button1;
 	private: System::Windows::Forms::Button^ button2;
+	//JokeManager* jokeManager;
 
 	protected:
 
@@ -97,6 +102,7 @@ namespace gui2 {
 #pragma endregion
 	private: System::Void Start_Load(System::Object^ sender, System::EventArgs^ e) {
 	}
+
 	private: System::Void button1_Click(System::Object^ sender, System::EventArgs^ e) {
 		MyForm^ change = gcnew MyForm(this);  // Pass the reference to the main form
 		change->Show();
@@ -104,7 +110,11 @@ namespace gui2 {
 	}
 	private: System::Void textBox1_TextChanged(System::Object^ sender, System::EventArgs^ e) {
 	}
+
 	private: System::Void button2_Click(System::Object^ sender, System::EventArgs^ e) {
+		Meniu^ change = gcnew Meniu(this);  // Pass the reference to the main form
+		change->Show();
+		this->Hide();
 	}
 	};
 }
