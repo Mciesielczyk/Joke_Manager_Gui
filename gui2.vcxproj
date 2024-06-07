@@ -81,12 +81,13 @@
     <ClCompile>
       <WarningLevel>Level3</WarningLevel>
       <PreprocessorDefinitions>_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>"C:\Users\micha\Desktop\projekt\include";%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>C:\Users\micha\Desktop\curl-8.8.0_1-win64-mingw\curl-8.8.0_1-win64-mingw\include;C:\Users\micha\Desktop\projekt\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <AdditionalDependencies>DLL.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <SubSystem>Windows</SubSystem>
       <EntryPointSymbol>main</EntryPointSymbol>
+      <AdditionalLibraryDirectories>C:\Users\micha\Desktop\curl-8.8.0_1-win64-mingw\curl-8.8.0_1-win64-mingw\lib</AdditionalLibraryDirectories>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
@@ -124,8 +125,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="firebase.cpp" />
     <ClCompile Include="get_access_URL.cpp" />
-    <ClCompile Include="Global.cpp" />
     <ClCompile Include="JokeManager.cpp" />
     <ClCompile Include="Jokes.cpp" />
     <ClCompile Include="Meniu.cpp" />
@@ -133,7 +134,7 @@
     <ClCompile Include="Start.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Global.h" />
+    <ClInclude Include="firebase.h" />
     <ClInclude Include="JokeManager.h" />
     <ClInclude Include="Jokes.h" />
     <ClInclude Include="Meniu.h">

@@ -1,7 +1,5 @@
-
 #include <curl/curl.h>
 #include "get_access_URL.h"
-
 #include <iostream>
 #include <string>
 #include <sstream>
@@ -11,6 +9,10 @@
 using namespace System::Windows::Forms;
 using namespace msclr::interop;
 
+
+//marsal_as jest do koonwersji string^ na strina
+//System::String^ to typ wskaŸnika do System::String
+//specjalna rzecz dla c++/cli
 void savetofile(DataGridView^ dataGridView, System::String^ filePath)
 {
     std::string filePathStr = marshal_as<std::string>(filePath);
@@ -23,14 +25,16 @@ void savetofile(DataGridView^ dataGridView, System::String^ filePath)
     }
 
     // Zapisz dane wierszy
-    for (int i = 0; i < dataGridView->RowCount; ++i)
+    //fancy if
+    for (int i = 0; i < dataGridView->RowCount-1; ++i)
     {
         for (int j = 0; j < dataGridView->ColumnCount; ++j)
         {
+            //sprawdza czy komorka jest nullptr jak tak to zapije "" jak nie to skonweuj i zapisz
             file << marshal_as<std::string>(dataGridView->Rows[i]->Cells[j]->Value == nullptr ? "" : dataGridView->Rows[i]->Cells[j]->Value->ToString());
             if (j < dataGridView->ColumnCount - 1)
             {
-                file << ",";
+                file << "#";
             }
         }
         
@@ -40,8 +44,25 @@ void savetofile(DataGridView^ dataGridView, System::String^ filePath)
     MessageBox::Show("Dane zosta³y pomyœlnie zapisane do pliku.", "Sukces", MessageBoxButtons::OK, MessageBoxIcon::Information);
 }
 
-void loadfile(System::Windows::Forms::DataGridView^ dataGridView, System::String^ filePath) {
-    std::string filePathstr = msclr::interop::marshal_as<std::string>(filePath);
+void savetofileVector(JokeManager& jokeManager, System::String^ filePath) {
+    // Konwersja System::String^ do std::string
+    std::string file_path = msclr::interop::marshal_as<std::string>(filePath);
+
+    // Otwarcie pliku do zapisu
+    std::ofstream file(file_path);
+    if (!file) {
+        System::Windows::Forms::MessageBox::Show("Nie mo¿na otworzyæ pliku do zapisu!");
+        return;
+    }
+
+    // Zapisanie ¿artów do pliku
+    file << jokeManager;
+
+    file.close();
+}
+
+void loadfile(DataGridView^ dataGridView, System::String^ filePath) {
+    std::string filePathstr = marshal_as<std::string>(filePath);
     std::ifstream file(filePathstr);
 
     if (!file.is_open()) {
@@ -58,7 +79,8 @@ void loadfile(System::Windows::Forms::DataGridView^ dataGridView, System::String
         std::stringstream ss(line);
         std::string cell;
 
-        while (std::getline(ss, cell, ','))
+        //z ss wczytujesz znaki do cell tak dlugo az napotka #
+        while (std::getline(ss, cell, '#'))
         {
             row.push_back(cell);
         }
@@ -67,10 +89,9 @@ void loadfile(System::Windows::Forms::DataGridView^ dataGridView, System::String
     }
 
     file.close();
-    data.pop_back();
     // Wpisz wczytane dane do DataGridView
     dataGridView->Rows->Clear(); // Wyczyœæ istniej¹ce dane w DataGridView
-    
+    //gcnew tworzy obiekt do .net
     for (const auto& row : data)
     {
         int rowIndex = dataGridView->Rows->Add(); // Dodaj nowy wiersz
@@ -134,6 +155,8 @@ std::string change_string(std::string whole) {
     }
     return newstring;
 }
+
+//¿adania http zeby pobrac zart z api
 std::string wypisz_dane() {
     CURL* curl;
     CURLcode res;
