@@ -59,6 +59,6 @@ void Jokes::setData(string data) {
 
 
 std::ostream& operator<<(std::ostream& os, const Jokes& joke) {
-    os << joke.ID << "#" << joke.content << "#" << joke.type << "#" << joke.rating << "#" << joke.ID <<endl;
+    os << joke.ID << "#" << joke.content << "#" << joke.type << "#" << joke.rating << "#" << joke.dateAdded <<endl;
     return os;
 }

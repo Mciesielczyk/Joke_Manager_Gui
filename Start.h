@@ -90,37 +90,46 @@ namespace gui2 {
 			this->button1->Anchor = static_cast<System::Windows::Forms::AnchorStyles>((((System::Windows::Forms::AnchorStyles::Top | System::Windows::Forms::AnchorStyles::Bottom)
 				| System::Windows::Forms::AnchorStyles::Left)
 				| System::Windows::Forms::AnchorStyles::Right));
+			this->button1->AutoSizeMode = System::Windows::Forms::AutoSizeMode::GrowAndShrink;
+			this->button1->BackColor = System::Drawing::Color::LightPink;
 			this->button1->Cursor = System::Windows::Forms::Cursors::Hand;
-			this->button1->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 32, static_cast<System::Drawing::FontStyle>(((System::Drawing::FontStyle::Bold | System::Drawing::FontStyle::Italic)
-				| System::Drawing::FontStyle::Underline)), System::Drawing::GraphicsUnit::Point, static_cast<System::Byte>(238), true));
-			this->button1->ForeColor = System::Drawing::SystemColors::MenuHighlight;
-			this->button1->Location = System::Drawing::Point(142, 97);
+			this->button1->Font = (gcnew System::Drawing::Font(L"Algerian", 31.8F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(0)));
+			this->button1->ForeColor = System::Drawing::SystemColors::InfoText;
+			this->button1->Location = System::Drawing::Point(142, 98);
 			this->button1->Name = L"button1";
-			this->button1->Size = System::Drawing::Size(306, 138);
+			this->button1->Size = System::Drawing::Size(237, 108);
 			this->button1->TabIndex = 0;
 			this->button1->Text = L"Start";
-			this->button1->UseVisualStyleBackColor = true;
+			this->button1->UseVisualStyleBackColor = false;
 			this->button1->Click += gcnew System::EventHandler(this, &Start::button1_Click);
 			// 
 			// button2
 			// 
-			this->button2->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 22, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
-				static_cast<System::Byte>(238)));
+			this->button2->Anchor = static_cast<System::Windows::Forms::AnchorStyles>((((System::Windows::Forms::AnchorStyles::Top | System::Windows::Forms::AnchorStyles::Bottom)
+				| System::Windows::Forms::AnchorStyles::Left)
+				| System::Windows::Forms::AnchorStyles::Right));
+			this->button2->AutoSizeMode = System::Windows::Forms::AutoSizeMode::GrowAndShrink;
+			this->button2->BackColor = System::Drawing::Color::Pink;
+			this->button2->BackgroundImageLayout = System::Windows::Forms::ImageLayout::None;
+			this->button2->Font = (gcnew System::Drawing::Font(L"Algerian", 22.2F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(0)));
+			this->button2->ForeColor = System::Drawing::SystemColors::ActiveCaptionText;
 			this->button2->Location = System::Drawing::Point(170, 265);
 			this->button2->Name = L"button2";
-			this->button2->Size = System::Drawing::Size(250, 112);
+			this->button2->Size = System::Drawing::Size(184, 96);
 			this->button2->TabIndex = 1;
 			this->button2->Text = L"List of Jokes";
-			this->button2->UseVisualStyleBackColor = true;
+			this->button2->UseVisualStyleBackColor = false;
 			this->button2->Click += gcnew System::EventHandler(this, &Start::button2_Click);
 			// 
 			// pictureBox1
 			// 
 			this->pictureBox1->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"pictureBox1.Image")));
-			this->pictureBox1->Location = System::Drawing::Point(47, 2);
+			this->pictureBox1->Location = System::Drawing::Point(-2, 1);
 			this->pictureBox1->Name = L"pictureBox1";
-			this->pictureBox1->Size = System::Drawing::Size(515, 533);
-			this->pictureBox1->SizeMode = System::Windows::Forms::PictureBoxSizeMode::CenterImage;
+			this->pictureBox1->Size = System::Drawing::Size(548, 537);
+			this->pictureBox1->SizeMode = System::Windows::Forms::PictureBoxSizeMode::StretchImage;
 			this->pictureBox1->TabIndex = 2;
 			this->pictureBox1->TabStop = false;
 			this->pictureBox1->Visible = false;
@@ -128,24 +137,34 @@ namespace gui2 {
 			// 
 			// checkBox1
 			// 
+			this->checkBox1->Appearance = System::Windows::Forms::Appearance::Button;
 			this->checkBox1->AutoSize = true;
-			this->checkBox1->Location = System::Drawing::Point(12, 526);
+			this->checkBox1->BackColor = System::Drawing::Color::Pink;
+			this->checkBox1->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 4.8F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(238)));
+			this->checkBox1->Location = System::Drawing::Point(12, 496);
 			this->checkBox1->Name = L"checkBox1";
-			this->checkBox1->Size = System::Drawing::Size(102, 20);
+			this->checkBox1->Size = System::Drawing::Size(35, 19);
 			this->checkBox1->TabIndex = 3;
-			this->checkBox1->Text = L"Show Pedro";
-			this->checkBox1->UseVisualStyleBackColor = true;
+			this->checkBox1->Text = L"Pedro";
+			this->checkBox1->UseVisualStyleBackColor = false;
 			this->checkBox1->CheckedChanged += gcnew System::EventHandler(this, &Start::checkBox1_CheckedChanged);
 			// 
 			// Start
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(8, 16);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
-			this->ClientSize = System::Drawing::Size(611, 557);
+			this->AutoSize = true;
+			this->AutoSizeMode = System::Windows::Forms::AutoSizeMode::GrowAndShrink;
+			this->BackgroundImage = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"$this.BackgroundImage")));
+			this->BackgroundImageLayout = System::Windows::Forms::ImageLayout::Stretch;
+			this->ClientSize = System::Drawing::Size(542, 528);
 			this->Controls->Add(this->checkBox1);
 			this->Controls->Add(this->pictureBox1);
 			this->Controls->Add(this->button2);
 			this->Controls->Add(this->button1);
+			this->Icon = (cli::safe_cast<System::Drawing::Icon^>(resources->GetObject(L"$this.Icon")));
+			this->MaximizeBox = false;
 			this->Name = L"Start";
 			this->StartPosition = System::Windows::Forms::FormStartPosition::CenterScreen;
 			this->Text = L"Start";

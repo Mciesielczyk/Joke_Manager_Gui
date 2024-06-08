@@ -37,6 +37,7 @@ void savetofile(DataGridView^ dataGridView, System::String^ filePath)
                 file << "#";
             }
         }
+        file << "\n";
         
     }
 
