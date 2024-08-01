@@ -17,7 +17,7 @@ The JokeManager class manages a collection of jokes, allowing for adding, deleti
 
 This file contains functions for retrieving and formatting random jokes from the internet. Uses curl for transferring data with various network protocols.
 
-## main.cpp File:
+## Start.cpp File:
 
 The main file contains the application logic, including:
 Calling joke management methods.
